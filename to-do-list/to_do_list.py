@@ -36,6 +36,17 @@ def remove_task(): # Removes one task from the to-do list
         except ValueError:
             print("Invalid task number. Enter a valid task number.")
 
+def view_tasks():
+    title = "Your to-do list"
+    print("----------")
+    if to_do_items:
+        print(title)
+        for index, item in enumerate(to_do_items, 1):
+            print(f"{index}. {item}")
+    else:
+        print("No items to view. Everything done!")
+    print("---------")
+
 def quit_program(): # Exit the program
     print("Have a nice day!")
     print("Exited the program.")
@@ -69,10 +80,7 @@ Main program
 def main():
     # Intro to the program; shows initial task list (if any)
     print("Hello! Here is your to-do list:")
-    if to_do_items:
-        print(to_do_items)
-    else:
-        print("No items to view. Everything done!")
+    view_tasks()
 
     running = True
     while running:
@@ -86,7 +94,7 @@ def main():
             case 2:
                 remove_task()
             case 3:
-                print(to_do_items)
+                view_tasks()
             case 4:
                 quit_program()
                 running = False
